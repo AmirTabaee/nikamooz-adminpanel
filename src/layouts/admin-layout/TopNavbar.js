@@ -17,7 +17,7 @@ export const TopNavbar = () => {
                <a class="navbar-brand">
                   {/* <img width="50px" style={{ marginLeft: "8px" }} src={user != null ? user.thumbnail : null} />
                   {user != null ? user.fullName : null} */}
-                  {user.fullname}
+                  {user != null ? user.fullname : ""}
                </a>
             </div>
             <button
