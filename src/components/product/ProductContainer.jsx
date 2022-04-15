@@ -2,24 +2,36 @@ import React, { useState } from "react";
 import { products, categories } from "../../globalData/InitialData";
 import ProductInfo from "./ProductInfo";
 import ProductList from "./ProductList";
+import swal from "sweetalert";
 
 const ProductContainer = () => {
    const [items, setItems] = useState(products);
    const [simpleItem, setSimpleItem] = useState({});
 
    const removeItem = (id) => {
-      const temp = [...items];
-      const filteredItems = temp.filter((i) => i.id !== id);
-      setItems(filteredItems);
+      swal({
+         title: "remove warning",
+         text: "Are you sure removing this item?",
+         icon: "warning",
+         dangerMode: true,
+      }).then((willDelete) => {
+         const temp = [...items];
+         const filteredItems = temp.filter((i) => i.id !== id);
+         setItems(filteredItems);
+         if (willDelete) {
+            swal("Deleted!", "Your imaginary file has been deleted!", "success");
+         }
+      });
    };
 
    const insertItem = (product) => {
       if (product.id) {
+         const category = categories.find((c) => c.id == product.categoryId);
          const temp = [...items];
          temp.forEach((item) => (item.editMode = false));
          const index = temp.findIndex((i) => i.id === product.id);
          let targetProduct = temp[index];
-         targetProduct = { ...product };
+         targetProduct = { ...product, categoryName: category.title };
          temp[index] = targetProduct;
          setItems(temp);
       } else {
