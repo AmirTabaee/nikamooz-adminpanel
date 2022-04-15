@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const ProductInfo = ({ categories, save }) => {
+const ProductInfo = ({ categories, save, simpleItem }) => {
    const {
       register,
       handleSubmit,
       formState: { errors },
+      reset,
    } = useForm();
+
+   useEffect(() => {
+      reset(simpleItem);
+   }, [simpleItem]);
 
    const submitForm = (data) => {
       console.log(data);
@@ -18,8 +23,8 @@ const ProductInfo = ({ categories, save }) => {
             <label className="form-check-label" htmlFor="title">
                Title:
             </label>
-            <input {...register("title", { required: true, minLength: 10 })} className="form-control" />
-            {errors.title?.type === "minLength" && <span className="text-danger">at least should be 10 chr</span>}
+            <input {...register("title", { required: true, minLength: 5 })} className="form-control" />
+            {errors.title?.type === "minLength" && <span className="text-danger">at least should be 5 chr</span>}
             {errors.title?.type === "required" && <span className="text-danger">should be filled</span>}
          </div>
          <div className="form-gorup">
