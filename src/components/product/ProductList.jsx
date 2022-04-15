@@ -1,6 +1,8 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const ProductList = ({ products, remove, update }) => {
+   const history = useHistory();
    return (
       <table className="table table-bordered table-striped">
          <thead>
@@ -21,8 +23,14 @@ const ProductList = ({ products, remove, update }) => {
                      <button className="btn btn-danger btn-sm mr-2" onClick={() => remove(item.id)}>
                         Remove
                      </button>
-                     <button className="btn btn-secondary btn-sm" onClick={() => update(item.id)}>
+                     <button className="btn btn-secondary btn-sm mr-2" onClick={() => update(item.id)}>
                         Update
+                     </button>
+                     <button className="btn btn-primary btn-sm mr-2" onClick={() => history.push(`/products/${item.id}`)}>
+                        Product Details
+                     </button>
+                     <button className="btn btn-primary btn-sm" onClick={() => history.push(`/products/info?id=${item.id}&title=${item.title}`)}>
+                        Query string
                      </button>
                   </td>
                </tr>
