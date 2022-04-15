@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const ProductInfo = ({ categories }) => {
+const ProductInfo = ({ categories, save }) => {
    const {
       register,
       handleSubmit,
@@ -10,6 +10,7 @@ const ProductInfo = ({ categories }) => {
 
    const submitForm = (data) => {
       console.log(data);
+      save(data);
    };
    return (
       <form onSubmit={handleSubmit(submitForm)}>
@@ -25,8 +26,8 @@ const ProductInfo = ({ categories }) => {
             <label className="form-check-label" htmlFor="category">
                Category:
             </label>
-            <select className="form-control">
-               <option>choose</option>
+            <select className="form-control" {...register("categoryId")}>
+               <option value={0}>choose</option>
                {categories.map((category) => (
                   <option key={category.id} value={category.id}>
                      {category.title}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, remove }) => {
    return (
       <table className="table table-bordered table-striped">
          <thead>
@@ -18,7 +18,9 @@ const ProductList = ({ products }) => {
                   <td>{item.categoryName}</td>
                   <td>{item.price}</td>
                   <td>
-                     <button className="btn btn-danger btn-sm mr-2">Remove</button>
+                     <button className="btn btn-danger btn-sm mr-2" onClick={() => remove(item.id)}>
+                        Remove
+                     </button>
                      <button className="btn btn-secondary btn-sm">Update</button>
                   </td>
                </tr>
