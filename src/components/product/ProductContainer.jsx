@@ -19,6 +19,16 @@ const ProductContainer = () => {
       const temp = [...items];
       setItems([...temp, product]);
    };
+
+   const handleEditMode = (id) => {
+      const temp = [...items];
+      temp.forEach((item) => (item.editMode = false));
+      const index = temp.findIndex((i) => i.id === id);
+      const product = temp[index];
+      product.editMode = true;
+      temp[index] = product;
+      setItems(temp);
+   };
    return (
       <div className="card p-4">
          <div className="row">
@@ -26,7 +36,7 @@ const ProductContainer = () => {
                <ProductInfo categories={categories} save={insertItem} />
             </div>
             <div className="col-md-9">
-               <ProductList products={items} remove={removeItem} />
+               <ProductList products={items} remove={removeItem} update={handleEditMode} />
             </div>
          </div>
       </div>
