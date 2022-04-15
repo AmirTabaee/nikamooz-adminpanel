@@ -15,10 +15,10 @@ const ProductList = ({ products }) => {
             {products.map((item) => (
                <tr key={item.id}>
                   <td>{item.title}</td>
-                  <td>{item.category}</td>
+                  <td>{item.categoryName}</td>
                   <td>{item.price}</td>
                   <td>
-                     <button className="btn btn-danger btn-sm">Remove</button>
+                     <button className="btn btn-danger btn-sm mr-2">Remove</button>
                      <button className="btn btn-secondary btn-sm">Update</button>
                   </td>
                </tr>
