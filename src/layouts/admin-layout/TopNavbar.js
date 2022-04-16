@@ -1,6 +1,8 @@
 import React from "react";
 
 export const TopNavbar = () => {
+   const info = JSON.parse(localStorage.getItem("user"));
+   console.log("Info => ", info);
    return (
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
          <div class="container-fluid">
@@ -12,11 +14,7 @@ export const TopNavbar = () => {
                      <span class="navbar-toggler-bar bar3"></span>
                   </button>
                </div>
-               <a class="navbar-brand">
-                  {/* <img width="50px" style={{ marginLeft: "8px" }} src={user != null ? user.thumbnail : null} />
-                  {user != null ? user.fullName : null} */}
-                  {/* {user != null ? user.fullname : ""} */}
-               </a>
+               <a class="navbar-brand">{info ? `${info.name}` : ""}</a>
             </div>
             <button
                class="navbar-toggler"
