@@ -17,21 +17,23 @@ const Login = () => {
             }, 400);
          }}
       >
-         <form>
-            <div className="form-group">
-               <label for="exampleInputEmail1">Email address</label>
-               <Field name="email" type="text" className="form-control" placeholder="Enter email" />
-               <ErrorMessage name="firstName" />
-            </div>
-            <div className="form-group">
-               <label for="exampleInputPassword1">Password</label>
-               <Field name="password" type="password" className="form-control" placeholder="Enter email" />
-               <ErrorMessage name="firstName" />
-            </div>
-            <button type="submit" className="btn btn-primary">
-               Submit
-            </button>
-         </form>
+         {({ isSubmitting }) => (
+            <Form>
+               <div className="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <Field name="email" type="text" className="form-control" placeholder="Enter email" />
+                  <ErrorMessage name="email" />
+               </div>
+               <div className="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <Field name="password" type="password" className="form-control" placeholder="Enter email" />
+                  <ErrorMessage name="password" />
+               </div>
+               <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                  Submit
+               </button>
+            </Form>
+         )}
       </Formik>
    );
 };
