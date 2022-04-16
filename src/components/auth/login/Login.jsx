@@ -1,8 +1,11 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+   const history = useHistory();
    return (
       <Formik
          initialValues={{ email: "", password: "" }}
@@ -11,10 +14,18 @@ const Login = () => {
             password: Yup.string().max(15, "Must be 15 characters or less").required("Required"),
          })}
          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-               alert(JSON.stringify(values, null, 2));
-               setSubmitting(false);
-            }, 400);
+            setSubmitting(false);
+
+            if (values.email === "sir.amir.71@gmail.com" && values.password === "123") {
+               const user = {
+                  name: "amir",
+                  email: "sir.amir.71@gmail.com",
+               };
+               localStorage.setItem("user", JSON.stringify(user));
+               history.push("/");
+            } else {
+               <Redirect to={{ pathname: "/login" }} />;
+            }
          }}
       >
          {({ isSubmitting }) => (

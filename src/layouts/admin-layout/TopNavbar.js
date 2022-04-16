@@ -1,8 +1,6 @@
 import React from "react";
 
 export const TopNavbar = () => {
-   //get data from localStorage
-   const user = JSON.parse(localStorage.getItem("user"));
    return (
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
          <div class="container-fluid">
@@ -17,7 +15,7 @@ export const TopNavbar = () => {
                <a class="navbar-brand">
                   {/* <img width="50px" style={{ marginLeft: "8px" }} src={user != null ? user.thumbnail : null} />
                   {user != null ? user.fullName : null} */}
-                  {user != null ? user.fullname : ""}
+                  {/* {user != null ? user.fullname : ""} */}
                </a>
             </div>
             <button
