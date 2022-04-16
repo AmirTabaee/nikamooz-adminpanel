@@ -22,12 +22,12 @@ const Login = () => {
                <div className="form-group">
                   <label for="exampleInputEmail1">Email address</label>
                   <Field name="email" type="text" className="form-control" placeholder="Enter email" />
-                  <ErrorMessage name="email" />
+                  <ErrorMessage name="email" component="span" className="text-danger" />
                </div>
                <div className="form-group">
                   <label for="exampleInputPassword1">Password</label>
                   <Field name="password" type="password" className="form-control" placeholder="Enter email" />
-                  <ErrorMessage name="password" />
+                  <ErrorMessage name="password" component="span" className="text-danger" />
                </div>
                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
                   Submit
