@@ -7,6 +7,7 @@ import { Switch, Route } from "react-router-dom";
 import ProductContainer from "../../components/product/ProductContainer";
 import MainDashboard from "../../components/dashboard/MainDashboard";
 import ProductDetails from "../../components/product/ProductDetails";
+import Login from "../../components/auth/login/Login";
 
 export const AdminLayout = () => {
    return (
@@ -18,6 +19,7 @@ export const AdminLayout = () => {
                <div className="content">
                   <Switch>
                      <Route path="/" exact component={MainDashboard} />
+                     <Route path="/login" component={Login} />
                      <Route path="/products" exact component={ProductContainer} />
                      <Route path="/products/:id" component={ProductDetails} />
                   </Switch>
