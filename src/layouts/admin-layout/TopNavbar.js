@@ -1,7 +1,14 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 export const TopNavbar = () => {
    const info = JSON.parse(localStorage.getItem("user"));
+   const location = useLocation();
+
+   const logOut = () => {
+      localStorage.clear();
+      window.location.reload();
+   };
    console.log("Info => ", info);
    return (
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -76,7 +83,7 @@ export const TopNavbar = () => {
                      </div>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link btn-rotate" href="javascript:;">
+                     <a class="nav-link btn-rotate" href="javascript:;" onClick={() => logOut()}>
                         <i class="nc-icon nc-settings-gear-65"></i>
                         <p>
                            <span class="d-lg-none d-md-block">Account</span>
