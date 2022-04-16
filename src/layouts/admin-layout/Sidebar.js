@@ -24,12 +24,7 @@ export const Sidebar = () => {
                      محصولات
                   </NavLink>
                </li>
-               <li>
-                  <NavLink activeClassName="active" className="simple-text logo-normal" to="/login">
-                     <i className="nc-icon nc-tile-56"></i>
-                     فرم ورود به سایت
-                  </NavLink>
-               </li>
+
                <li>
                   <NavLink activeClassName="active" className="simple-text logo-normal" to="/post">
                      <i className="nc-icon nc-tile-56"></i>
